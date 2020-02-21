@@ -2,7 +2,6 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 
 var bookRouter = require('./routes/api');
 var usersRouter = require('./routes/users');
@@ -15,9 +14,13 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(cors());
-
-app.use(logger('dev'));
+const middleWare = (req, res, next) =>
+{
+  console.log(`Incoming request to ${req.originalUrl}`);
+  next();
+}
 app.use(express.json());
+app.use(middleWare);
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));

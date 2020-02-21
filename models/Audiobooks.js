@@ -6,4 +6,4 @@ const AudiobookSchema = mongoose.Schema({
     finished: {type: Boolean, required: true}
 })
 
-module.exports = mongoose.model('Audiobooks', AudiobookSchema, 'Audiobooks');
+module.exports = Audiobooks = mongoose.model('Audiobooks', AudiobookSchema, 'Audiobooks');

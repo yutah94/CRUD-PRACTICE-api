@@ -15,4 +15,12 @@ const getAllAudiobooks = (req, res) => {
     })
 }
 
+var express = require('express');
+var router = express.Router();
+
+/* GET api/register */
+router.get('/', function(req, res, next) {
+  res.status(503).send("Oh noes! You sent a GET request - please send your request as a POST request. K Thx Bye!");
+});
+
 module.exports = {getAllAudiobooks};
