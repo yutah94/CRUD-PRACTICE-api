@@ -7,16 +7,16 @@ router.get('/books', function(req, res) {
   DAL.getAllAudiobooks(req, res)
 });
 
-router.get('/:id', function(req, res) {
+router.get('/books/:id', function(req, res) {
   DAL.getBooks(req, res)
 });
 
-router.put('/update/:id', function(req, res) {
+router.put('/books/:id', function(req, res) {
   DAL.updateBooks(req, res)
 });
 
-router.delete('/delete/:id', function(req, res) {
-  DAL.deleteBooks(req, res)
+router.delete('/books/:id', function(req, res) {
+  DAL.deleteBooks(req, res);
 });
 
 router.post('/books', function(req, res) {

@@ -35,6 +35,7 @@ const updateBooks = (req, res) => {
 }
 
 const deleteBooks = (req, res) => {
+    console.log('Delete id: ', req.params.id)
     Audiobooks.findByIdAndDelete(req.params.id, (err, book) => {
         if(err){
             res.status(500).json(err);
@@ -64,7 +65,4 @@ const addBooks = (req, res) => {
 // });
 
 
-module.exports = {getAllAudiobooks, addBooks};
-module.exports = {getBooks};
-module.exports = {updateBooks};
-module.exports = {deleteBooks};
+module.exports = {getAllAudiobooks, addBooks, getBooks, updateBooks, deleteBooks};
