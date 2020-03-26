@@ -1,31 +1,31 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-const Audiobooks = require('../models/Audiobooks');
+const Todolist = require('../models/Todolist');
 
 mongoose.connect(process.env.ATLAS_CONNECTION, {useNewUrlParser: true, useUnifiedTopology: true} )
 .then(console.log('The connection is good'))
 .catch(err => {console.log(err)});
 
-const getAllAudiobooks = (req, res) => {
-    Audiobooks.find({}, (err, book) => {
+const getAllTodos = (req, res) => {
+    Todolist.find({}, (err, todo) => {
         if(err){
             res.status(500).json(err);
         } 
-        res.status(200).json(book);
+        res.status(200).json(todo);
     })
 }
 
-const getBooks = (req, res) => {
-    Audiobooks.findById(req.params.id, (err, book) => {
+const getTodos = (req, res) => {
+    Todolist.findById(req.params.id, (err, todo) => {
         if(err){
             res.status(500).json(err);
         } 
-        res.status(200).json(book);
+        res.status(200).json(todo);
     })
 }
 
-const updateBooks = (req, res) => {
-    Audiobooks.findByIdAndUpdate(req.params.id, req.body) 
+const updateTodos = (req, res) => {
+    TodoList.findByIdAndUpdate(req.params.id, req.body) 
         .then(results => {
             res.status(200).json(results)
         })
@@ -34,23 +34,23 @@ const updateBooks = (req, res) => {
         })
 }
 
-const deleteBooks = (req, res) => {
+const deleteTodos = (req, res) => {
     console.log('Delete id: ', req.params.id)
-    Audiobooks.findByIdAndDelete(req.params.id, (err, book) => {
+    Todolist.findByIdAndDelete(req.params.id, (err, todo) => {
         if(err){
             res.status(500).json(err);
         } 
-        res.status(200).json(book);
+        res.status(200).json(todo);
     })
 }
 
-const addBooks = (req, res) => { 
-    const newAudiobooks = new Audiobooks({
-        author: `${req.body.author}`,
-        title: `${req.body.title}`
+const addTodos = (req, res) => { 
+    const newTodolist = new Todolist({
+        todos: `${req.body.todos}`,
+        responsible: `${req.body.responsible}`
     });
         
-    newAudiobooks.save()
+    newTodolist.save()
     .then(result => {
         res.status(201).json(result)
     })
@@ -65,4 +65,4 @@ const addBooks = (req, res) => {
 // });
 
 
-module.exports = {getAllAudiobooks, addBooks, getBooks, updateBooks, deleteBooks};
+module.exports = {getAllTodos, addTodos, getTodos, updateTodos, deleteTodos};

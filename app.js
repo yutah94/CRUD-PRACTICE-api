@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 
-var bookRouter = require('./routes/api');
+var todoRouter = require('./routes/api');
 var usersRouter = require('./routes/users');
 require('dotenv').config
 const cors = require('cors');
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', bookRouter);
+app.use('/api', todoRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
