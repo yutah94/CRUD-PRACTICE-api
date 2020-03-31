@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const DAL = require('../Controller/dataAccessLayer')
-const PORT = process.env.PORT || 5432;
 
 /* GET home page. */
 router.get('/todos', function(req, res) {

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 const Todolist = require('../models/Todolist');
+const express = require('express');
+// const app = express();
+// const PORT = process.env.PORT || 5432;
+
 
 mongoose.connect(process.env.ATLAS_CONNECTION, {useNewUrlParser: true, useUnifiedTopology: true} )
 .then(console.log('The connection is good'))
@@ -63,6 +67,10 @@ const addTodos = (req, res) => {
 // router.get('/', function(req, res, next) {
 //   res.status(503).send("Oh noes! You sent a GET request - please send your request as a POST request. K Thx Bye!");
 // });
+
+// app.listen(PORT, function() {
+//     console.log("Server is running on port:", PORT)
+// })
 
 
 module.exports = {getAllTodos, addTodos, getTodos, updateTodos, deleteTodos};
